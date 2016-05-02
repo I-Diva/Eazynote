@@ -3,7 +3,9 @@ module EasyNote
   class CreateNote
   	@@date = Time.now.strftime("%m/%d/%Y")
   	@@time = Time.now.strftime("%I:%M%p")
-	def initialize
+
+  	
+    def initialize
 	  @title = note_title
 	  @speaker = note_speaker_name
 	  @content = note_content
@@ -41,8 +43,6 @@ module EasyNote
 	  file.syswrite "\n"
 	  file.close
 	end
-  end
-  class SearchNote
   end
 end
 EasyNote::CreateNote.new()
