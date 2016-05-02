@@ -26,13 +26,13 @@ module EasyNote
     end
 
     def save_note
-      c = 'Title: ' << @title << "\n"
-      c += 'Speaker: ' << @speaker << "\n"
-      c += 'Date: ' << Time.now.strftime('%m/%d/%Y') << "\n"
-      c += 'Time: ' << Time.now.strftime('%I:%M%p') << "\n"
-      c += 'Content: ' << @content << "\n"
+      content_to_write = 'Title: ' << @title << "\n"
+      content_to_write += 'Speaker: ' << @speaker << "\n"
+      content_to_write += 'Date: ' << Time.now.strftime('%m/%d/%Y') << "\n"
+      content_to_write += 'Time: ' << Time.now.strftime('%I:%M%p') << "\n"
+      content_to_write += 'Content: ' << @content << "\n"
       file = File.new(@title << '.txt', 'w+')
-      file.syswrite c
+      file.syswrite content_to_write
       file.close
     end
   end
