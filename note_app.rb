@@ -1,20 +1,14 @@
 module EasyNote
   # create a class for the "createnote" feature within the Easynote Namespace
   class CreateNote
-    def initialize
+  	@@date = Time.now.strftime("%m/%d/%Y")
+  	@@time = Time.now.strftime("%I:%M%p")
+	def initialize
 	  @title = note_title
 	  @speaker = note_speaker_name
-	  @note_date = app_date
 	  @content = note_content
 	  save_note
-    end
-
-    def print_note
-	  puts @title
-	  puts @content
-	  puts @speaker
-	  puts @note_date
-    end
+	end
 
     private
 	
@@ -28,28 +22,27 @@ module EasyNote
 	  gets.chomp
     end
 
-    def app_date
-	  Time.now
-	end
-
     def note_content
 	  puts "Note content:"
 	  gets.chomp
 	end
 
     def save_note
-	  file = File.new("input.txt", "w+")
+	  file = File.new(@title << " .txt", "w+")
 	  file.syswrite 'Title: ' << @title
 	  file.syswrite "\n"
 	  file.syswrite 'Speaker: ' << @speaker
 	  file.syswrite "\n"
-	  file.syswrite 'Date: '
-	  file.syswrite @note_date
+	  file.syswrite 'Date: ' << @@date
+	  file.syswrite "\n"
+	  file.syswrite 'Time: ' << @@time
 	  file.syswrite "\n"
 	  file.syswrite 'Content: ' << @content
 	  file.syswrite "\n"
 	  file.close
 	end
+  end
+  class SearchNote
   end
 end
 EasyNote::CreateNote.new()
